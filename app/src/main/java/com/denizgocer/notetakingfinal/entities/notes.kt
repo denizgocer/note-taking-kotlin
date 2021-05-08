@@ -1,29 +1,36 @@
 package com.denizgocer.notetakingfinal.entities
+
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "Notes")
- class Notes: Serializable {
+class Notes : Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    var pld:Int? = null
+    var pld: Int? = null
 
     @ColumnInfo(name = "title")
-    var title:String? = null
+    var title: String? = null
 
     @ColumnInfo(name = "sub_title")
-     var subTitle:String? = null
+    var subTitle: String? = null
 
     @ColumnInfo(name = "date_time")
-    var dateTime:String? = null
+    var dateTime: String? = null
+
+    @ColumnInfo(name = "path_image")
+    var pathImage: String? = null
+
+    @ColumnInfo(name = "web_link")
+    var webLink: String? = null
 
     @ColumnInfo(name = "note_text")
-    var noteText:String? = null
+    var noteText: String? = null
 
     @ColumnInfo(name = "color")
-    var color:String? = null
+    var color: String? = null
 
 
     override fun toString(): String {
