@@ -2,24 +2,22 @@ package com.denizgocer.notetakingfinal.adapter
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.denizgocer.notetakingfinal.R
 import com.denizgocer.notetakingfinal.entities.Notes
 import kotlinx.android.synthetic.main.item_rv_notes.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
-
-class NotesAdapter() :
+class NotesAdapter :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
-    var listener: AdapterView.OnItemClickListener? = null
+    var listener: OnItemClickListener? = null
     var arrList = ArrayList<Notes>()
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): NotesAdapter.NotesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         return NotesViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_rv_notes, parent, false)
         )
@@ -33,21 +31,16 @@ class NotesAdapter() :
         arrList = arrNotesList as ArrayList<Notes>
     }
 
-    fun setOnClickListener(listener1: AdapterView.OnItemClickListener) {
+    fun setOnClickListener(listener1: OnItemClickListener) {
         listener = listener1
     }
 
-    override fun onBindViewHolder(holder: NotesAdapter.NotesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
 
         holder.itemView.tvTitle.text = arrList[position].title
         holder.itemView.tvDesc.text = arrList[position].noteText
         holder.itemView.tvDateTime.text = arrList[position].dateTime
 
-        if (arrList[position].color != null) {
-            holder.itemView.cardView.setCardBackgroundColor(Color.parseColor(arrList[position].color))
-        } else {
-            holder.itemView.cardView.setCardBackgroundColor(Color.parseColor(R.color.ColorLightBlack.toString()))
-        }
 
         if (arrList[position].pathImage != null) {
             holder.itemView.imgNote.setImageBitmap(BitmapFactory.decodeFile(arrList[position].pathImage))
@@ -69,15 +62,13 @@ class NotesAdapter() :
 
     }
 
-    class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
     }
+
 
     interface OnItemClickListener {
         fun onClicked(noteId: Int)
     }
 
-}
-
-private fun AdapterView.OnItemClickListener.onClicked(pld: Int) {
 }
