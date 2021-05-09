@@ -25,6 +25,7 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
             noteId = id
             return fragment
         }
+
     }
 
     override fun setupDialog(dialog: Dialog, style: Int) {
@@ -95,7 +96,6 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
         fNote1.setOnClickListener {
             imgNote1.setImageResource(R.drawable.ic_tick)
             imgNote2.setImageResource(0)
-            imgNote3.setImageResource(0)
             imgNote4.setImageResource(0)
             imgNote5.setImageResource(0)
             imgNote6.setImageResource(0)

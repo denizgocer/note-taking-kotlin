@@ -41,6 +41,11 @@ class NotesAdapter :
         holder.itemView.tvDesc.text = arrList[position].noteText
         holder.itemView.tvDateTime.text = arrList[position].dateTime
 
+        if (arrList[position].color != null){
+            holder.itemView.cardView.setCardBackgroundColor(Color.parseColor(arrList[position].color))
+        }else{
+            holder.itemView.cardView.setCardBackgroundColor(Color.parseColor(R.color.ColorLightBlack.toString()))
+        }
 
         if (arrList[position].pathImage != null) {
             holder.itemView.imgNote.setImageBitmap(BitmapFactory.decodeFile(arrList[position].pathImage))

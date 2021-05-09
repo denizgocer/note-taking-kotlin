@@ -18,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            app:tint="@color/ColorWhite"
             android:id="@+id/imgMore"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
@@ -69,24 +70,7 @@
                 android:layout_gravity="center"
                 app:tint="@color/ColorWhite" />
         </FrameLayout>
-        <FrameLayout
-            android:id="@+id/fNote3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/_5sdp">
 
-            <View
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
-                android:background="@drawable/note_color_3" />
-
-            <ImageView
-                android:id="@+id/imgNote3"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_gravity="center"
-                app:tint="@color/ColorWhite" />
-        </FrameLayout>
 
 
         <FrameLayout

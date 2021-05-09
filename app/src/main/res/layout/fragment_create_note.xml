@@ -11,8 +11,8 @@
         android:id="@+id/imgBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,15 +33,15 @@
 
     <EditText
         android:id="@+id/etNoteTitle"
-        android:background="@null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
+        android:background="@null"
         android:ellipsize="end"
         android:hint="@string/notes_title"
+        android:inputType="text"
         android:maxLines="1"
         android:padding="@dimen/_10sdp"
-        android:inputType="text"
         android:textColor="@color/ColorWhite"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_14ssp"
@@ -53,10 +53,10 @@
         android:id="@+id/tvDateTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
         android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:ellipsize="end"
         android:maxLines="1"
         android:paddingStart="@dimen/_10sdp"
@@ -71,27 +71,29 @@
         android:id="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDateTime"
-        android:layout_margin="@dimen/_10sdp">
-        
+        app:layout_constraintTop_toBottomOf="@id/tvDateTime">
+
         <View
+            android:id="@+id/colorView"
             android:layout_width="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
             android:layout_height="match_parent"
-            android:background="@color/ColorBlue"/>
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@color/ColorBlue" />
+
         <EditText
             android:id="@+id/etNoteSub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@null"
             android:ellipsize="end"
             android:hint="@string/notes_sub_title"
-            android:maxLines="1"
-            android:background="@null"
-            android:padding="@dimen/_10ssp"
             android:inputType="text"
+            android:maxLines="1"
+            android:padding="@dimen/_10ssp"
             android:textColor="@color/ColorWhite"
             android:textColorHint="@color/ColorGray"
             android:textSize="@dimen/_12sdp" />
@@ -104,16 +106,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
+        android:background="@null"
         android:hint="@string/notes_desc"
         android:inputType="textMultiLine"
         android:padding="@dimen/_10sdp"
-        android:background="@null"
         android:textColor="@color/ColorWhite"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/l1" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imgMore"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:src="@drawable/ic_baseline_more_horiz_24"
+            app:tint="@color/ColorWhite"/>
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
