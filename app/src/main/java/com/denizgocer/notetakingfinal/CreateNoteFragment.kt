@@ -28,6 +28,7 @@ import android.app.Activity.RESULT_OK
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Patterns
 import pub.devrel.easypermissions.AppSettingsDialog
 import java.lang.Exception
 
@@ -40,6 +41,7 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
     private var READ_STORAGE_PERM = 123
     private var REQUEST_CODE_IMAGE = 456
     private var selectedImagePath = ""
+    private var webLink = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,9 +91,9 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
             requireActivity().supportFragmentManager.popBackStack()
         }
 
-        imgMore.setOnClickListener {
+       /* imgMore.setOnClickListener {
             replaceFragment(HomeFragment.newInstance(), false)
-        }
+        } */
 
         imgMore.setOnClickListener {
             var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(-1)
@@ -99,6 +101,23 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
                 requireActivity().supportFragmentManager,
                 "Note Bottom Sheet Fragment"
             )
+        }
+
+        btnOk.setOnClickListener{
+            if(etWebLink.text.toString().trim().isNotEmpty()){
+                checkWebUrl()
+            } else {
+                Toast.makeText(requireContext(),"Url is required", Toast.LENGTH_SHORT)
+            }
+        }
+
+        btnCancel.setOnClickListener{
+            layoutWebUrl.visibility = View.GONE
+        }
+
+        tvWebLink.setOnClickListener{
+            var intent = Intent(Intent.ACTION_VIEW,Uri.parse(etWebLink.text.toString()))
+            startActivity(intent)
         }
     }
 
@@ -111,27 +130,31 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
         } else if (etNoteDesc.text.isNullOrEmpty()) {
 
             Toast.makeText(context, "Note Description is Required", Toast.LENGTH_SHORT).show()
-        }
+        } else {
 
-        launch {
-            val notes = Notes()
-            notes.title = etNoteTitle.text.toString()
-            notes.subTitle = etNoteSub.text.toString()
-            notes.noteText = etNoteDesc.text.toString()
-            notes.dateTime = currentDate
-            notes.color = selectedColor
-            notes.pathImage = selectedImagePath
-            context.let {
-                NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
-                etNoteDesc.setText("")
-                etNoteSub.setText("")
-                etNoteTitle.setText("")
+            launch {
+                val notes = Notes()
+                notes.title = etNoteTitle.text.toString()
+                notes.subTitle = etNoteSub.text.toString()
+                notes.noteText = etNoteDesc.text.toString()
+                notes.dateTime = currentDate
+                notes.color = selectedColor
+                notes.pathImage = selectedImagePath
+                notes.webLink = webLink
+                context.let {
+                    NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
+                    etNoteDesc.setText("")
+                    etNoteSub.setText("")
+                    etNoteTitle.setText("")
+                    imgNote.visibility = View.GONE
+                    tvWebLink.visibility = View.GONE
+                    requireActivity().supportFragmentManager.popBackStack()
+                }
             }
         }
     }
 
-
-    fun replaceFragment(fragment: Fragment, istransition: Boolean) {
+   /* fun replaceFragment(fragment: Fragment, istransition: Boolean) {
         val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
 
         if (istransition) {
@@ -142,6 +165,19 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
         }
         fragmentTransition.add(R.id.frame_layout, fragment)
             .addToBackStack(fragment.javaClass.simpleName).commit()
+    } */
+
+
+    private fun checkWebUrl(){
+        if(Patterns.WEB_URL.matcher(etWebLink.text.toString()).matches()) {
+            layoutWebUrl.visibility = View.GONE
+            etWebLink.isEnabled = false
+            webLink = etWebLink.text.toString()
+            tvWebLink.visibility = View.VISIBLE
+            tvWebLink.text = etWebLink.text.toString()
+        } else {
+            Toast.makeText(requireContext(),"Url is not valid",Toast.LENGTH_SHORT).show()
+        }
     }
 
     private val BroadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
@@ -177,15 +213,17 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
                 }
 
                 "Image" -> {
-
                     readStorageTask()
+                    layoutWebUrl.visibility = View.GONE
                 }
 
                 "WebUrl" -> {
-                    //show web url layout
+                    layoutWebUrl.visibility = View.VISIBLE
                 }
 
                 else -> {
+                    layoutWebUrl.visibility = View.VISIBLE
+                    imgNote.visibility = View.GONE
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
                 }
@@ -225,11 +263,11 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
     }
 
     private fun getPathFromUri(contentUri: Uri): String? {
-        var filePath:String? = null
-        var cursor = requireActivity().contentResolver.query(contentUri,null,null,null,null)
-        if ( cursor == null) {
+        var filePath: String? = null
+        var cursor = requireActivity().contentResolver.query(contentUri, null, null, null, null)
+        if (cursor == null) {
             filePath = contentUri.path
-        } else{
+        } else {
             cursor.moveToFirst()
             var index = cursor.getColumnIndex("_data")
             filePath = cursor.getString(index)
