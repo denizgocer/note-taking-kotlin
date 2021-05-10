@@ -103,13 +103,70 @@
 
     <ImageView
         android:id="@+id/imgNote"
-        app:layout_constraintTop_toBottomOf="@id/l1"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:visibility="gone"
-        android:layout_height="@dimen/_300sdp"/>
+        app:layout_constraintTop_toBottomOf="@id/l1" />
+
+
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:id="@+id/layoutWebUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgNote"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/etWebLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@null"
+            android:hint="@string/web_url"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/ColorWhite"
+            android:textColorHint="@color/ColorGray"
+            android:textSize="@dimen/_12ssp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:textSize="@dimen/_12ssp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@color/colorAccent"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/ColorWhite"/>
+
+            <Button
+                android:id="@+id/btnOk"
+                android:textSize="@dimen/_12ssp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@color/colorAccent"
+                android:text="@string/ok"
+                android:textAllCaps="false"
+                android:textColor="@color/ColorWhite"
+                android:layout_marginStart="@dimen/_5sdp"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <EditText
         android:id="@+id/etNoteDesc"
@@ -125,7 +182,7 @@
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgNote" />
+        app:layout_constraintTop_toBottomOf="@id/layoutWebUrl" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -136,11 +193,11 @@
 
         <ImageView
             android:id="@+id/imgMore"
-            android:layout_gravity="center"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_baseline_more_horiz_24"
-            app:tint="@color/ColorWhite"/>
+            app:tint="@color/ColorWhite" />
 
     </FrameLayout>
 

@@ -181,6 +181,10 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
                     readStorageTask()
                 }
 
+                "WebUrl" -> {
+                    //show web url layout
+                }
+
                 else -> {
                     selectedColor = p1.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
