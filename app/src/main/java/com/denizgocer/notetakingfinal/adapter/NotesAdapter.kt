@@ -2,7 +2,6 @@ package com.denizgocer.notetakingfinal.adapter
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import kotlinx.android.synthetic.main.item_rv_notes.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class NotesAdapter :
+class NotesAdapter() :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
     var listener: OnItemClickListener? = null
     var arrList = ArrayList<Notes>()

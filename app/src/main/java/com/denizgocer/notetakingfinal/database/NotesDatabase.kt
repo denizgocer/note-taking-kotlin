@@ -3,7 +3,6 @@ package com.denizgocer.notetakingfinal.database
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
-import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import com.denizgocer.notetakingfinal.dao.NotesDao
 import com.denizgocer.notetakingfinal.entities.Notes
@@ -15,10 +14,10 @@ abstract class NotesDatabase : RoomDatabase() {
         var notesDatabase: NotesDatabase? = null
 
         @Synchronized
-        fun getDatabase(context: Context?): NotesDatabase {
+        fun getDatabase(context: Context): NotesDatabase {
             if (notesDatabase == null) {
                 notesDatabase = Room.databaseBuilder(
-                    context!!
+                    context
                     , NotesDatabase::class.java
                     , "notes.db"
                 ).build()

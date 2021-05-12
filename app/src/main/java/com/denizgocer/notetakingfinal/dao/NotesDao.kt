@@ -20,7 +20,4 @@ interface NotesDao {
     @Query("DELETE FROM notes WHERE pld=:pld")
     suspend fun deleteSpecificNote(pld: Int)
 
-    @Update
-    suspend fun updateNote(note: Notes)
-
 }

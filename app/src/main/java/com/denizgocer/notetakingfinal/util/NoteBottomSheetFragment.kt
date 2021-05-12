@@ -41,7 +41,7 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
         if (behavior is BottomSheetBehavior<*>) {
             behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    TODO("Not yet implemented")
+                    println("Not yet implemented")
                 }
 
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -184,12 +184,13 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
         }
 
-        layoutImage.setOnClickListener {
+        layoutImage.setOnClickListener{
             val intent = Intent("bottom_sheet_action")
-            intent.putExtra("action", "Image")
+            intent.putExtra("action","Image")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
             dismiss()
         }
+
         layoutWebUrl.setOnClickListener {
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action", "WebUrl")
