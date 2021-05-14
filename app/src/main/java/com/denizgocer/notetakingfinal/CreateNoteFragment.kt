@@ -94,9 +94,10 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                     if (notes.pathImage != ""){
                         selectedImagePath = notes.pathImage!!
                         imgNote.setImageBitmap(BitmapFactory.decodeFile(notes.pathImage))
-                        layoutImage.visibility = View.VISIBLE
+                        layoutImageRL.visibility = View.VISIBLE
                         imgNote.visibility = View.VISIBLE
                     }else{
+                        layoutImageRL.visibility = View.GONE
                         imgNote.visibility = View.GONE
                     }
 
@@ -197,7 +198,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                     etNoteTitle.setText("")
                     etNoteSub.setText("")
                     etNoteDesc.setText("")
-                    layoutImage.visibility = View.GONE
+                    layoutImageRL.visibility = View.GONE
                     imgNote.visibility = View.GONE
                     tvWebLink.visibility = View.GONE
                     requireActivity().supportFragmentManager.popBackStack()
@@ -292,7 +293,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
 
                 else -> {
-                    layoutImage.visibility = View.GONE
+                    layoutImageRL.visibility = View.GONE
                     imgNote.visibility = View.GONE
                     layoutWebUrl.visibility = View.GONE
                     selectedColor = p1.getStringExtra("selectedColor")!!
@@ -364,7 +365,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                         var bitmap = BitmapFactory.decodeStream(inputStream)
                         imgNote.setImageBitmap(bitmap)
                         imgNote.visibility = View.VISIBLE
-                        layoutImage.visibility = View.VISIBLE
+                        layoutImageRL.visibility = View.VISIBLE
                         selectedImagePath = getPathFromUri(selectedImageUrl)!!
                     }catch (e:Exception){
                         Toast.makeText(requireContext(),e.message,Toast.LENGTH_SHORT).show()

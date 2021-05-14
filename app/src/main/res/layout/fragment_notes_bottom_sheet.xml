@@ -163,7 +163,7 @@
     android:ellipsize="end"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/layoutImage"
+        android:id="@+id/layoutImageLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

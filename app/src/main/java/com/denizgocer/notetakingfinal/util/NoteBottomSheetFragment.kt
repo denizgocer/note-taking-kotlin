@@ -184,7 +184,7 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
         }
 
-        layoutImage.setOnClickListener{
+        layoutImageLL.setOnClickListener{
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action","Image")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)

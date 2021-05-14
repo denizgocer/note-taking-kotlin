@@ -101,29 +101,35 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imgNote"
+    <RelativeLayout
+        android:id="@id/layoutImageRL"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_300sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/l1" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/l1"
+        android:visibility="gone">
 
+        <ImageView
+            android:id="@+id/imgNote"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:visibility="gone" />
+    </RelativeLayout>
 
     <LinearLayout
-        android:background="@color/colorPrimary"
         android:id="@+id/layoutWebUrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp"
-        android:layout_margin="@dimen/_10sdp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgNote"
-        android:visibility="gone">
+        app:layout_constraintTop_toBottomOf="@id/layoutImageRL">
 
         <EditText
             android:id="@+id/etWebLink"
@@ -141,29 +147,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="end">
+            android:gravity="end"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnCancel"
-                android:textSize="@dimen/_12ssp"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_30sdp"
                 android:background="@color/colorAccent"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
-                android:textColor="@color/ColorWhite"/>
+                android:textColor="@color/ColorWhite"
+                android:textSize="@dimen/_12ssp" />
 
             <Button
                 android:id="@+id/btnOk"
-                android:textSize="@dimen/_12ssp"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:background="@color/colorAccent"
                 android:text="@string/ok"
                 android:textAllCaps="false"
                 android:textColor="@color/ColorWhite"
-                android:layout_marginStart="@dimen/_5sdp"/>
+                android:textSize="@dimen/_12ssp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -176,14 +182,14 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_5sdp"
+        android:autoLink="web"
         android:ellipsize="end"
         android:padding="@dimen/_10sdp"
         android:textColor="@color/ColorGray"
         android:textColorHint="@color/ColorGray"
-        android:textSize="@dimen/_12ssp"
-        android:autoLink="web"
-        android:visibility="gone"
         android:textColorLink="@color/colorAccent"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutWebUrl" />
