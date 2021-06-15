@@ -8,6 +8,20 @@ plugins {
 
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\90537\\Desktop\\Keys\\keystore.jks')
+            storePassword 'bazanji3460'
+            keyAlias 'notely'
+            keyPassword 'notely123'
+        }
+        release {
+            storeFile file('C:\\Users\\90537\\Desktop\\Keys\\keystore.jks')
+            storePassword 'bazanji3460'
+            keyAlias 'notely'
+            keyPassword 'notely123'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
 
@@ -25,6 +39,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+            jniDebuggable true
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
