@@ -16,6 +16,3 @@ This application aims to provide a simple note taking solution to android users.
 -Kotlin<br>
 -Coroutines<br>
 -Room<br>
-<h3>Known issues</h3><br>
-  -No Turkish chars are allowed<br>
-  -Date function is messy
