@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<LinearLayout
+    android:orientation="vertical"
     android:id="@+id/layoutNote"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
@@ -35,6 +36,7 @@
                 android:textSize="@dimen/_15ssp"
                 android:text="@string/notes"
                 android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
                 android:paddingTop="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +64,7 @@
                 android:textSize="@dimen/_11ssp"
                 android:text="@string/notes"
                 android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="10dp"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 app:layout_constraintTop_toTopOf="parent"

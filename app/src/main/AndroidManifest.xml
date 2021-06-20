@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:requestLegacyExternalStorage="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        android:theme="@style/AppTheme.Launcher"
+        >
 
         <activity android:name=".MainActivity">
             <intent-filter>

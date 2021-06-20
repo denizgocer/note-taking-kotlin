@@ -10,13 +10,13 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\90537\\Desktop\\Keys\\keystore.jks')
+            storeFile file('C:\\Users\\90537\\Desktop\\Android Apps\\Keys\\keystore.jks')
             storePassword 'bazanji3460'
             keyAlias 'notely'
             keyPassword 'notely123'
         }
         release {
-            storeFile file('C:\\Users\\90537\\Desktop\\Keys\\keystore.jks')
+            storeFile file('C:\\Users\\90537\\Desktop\\Android Apps\\Keys\\keystore.jks')
             storePassword 'bazanji3460'
             keyAlias 'notely'
             keyPassword 'notely123'
