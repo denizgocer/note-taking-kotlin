@@ -19,15 +19,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/ColorWhite" />
 
+    <ImageButton
+        android:id="@+id/imgCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_60sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:src="@drawable/ic_baseline_content_copy_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/ColorWhite" />
+
     <ImageView
         android:id="@+id/imgDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_30sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:src="@drawable/ic_tick"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgCopy"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/ColorWhite" />
 

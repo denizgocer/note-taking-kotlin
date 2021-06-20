@@ -3,10 +3,7 @@ package com.denizgocer.notetakingfinal
 import android.Manifest
 import android.app.Activity
 import android.app.Activity.RESULT_OK
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -22,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.denizgocer.notetakingfinal.database.NotesDatabase
@@ -82,10 +80,13 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
         super.onViewCreated(view, savedInstanceState)
 
 
+
+
         if (noteId != -1) {
 
             launch {
                 context?.let {
+
                     var notes = NotesDatabase.getDatabase(it).noteDao().getSpecificNote(noteId)
                     colorView.setBackgroundColor(Color.parseColor(notes.color))
                     etNoteTitle.setText(notes.title)
@@ -127,6 +128,7 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
 
         tvDateTime.text = currentDate
 
+
         imgDone.setOnClickListener {
 
             if (noteId != -1) {
@@ -134,6 +136,16 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
             } else {
                 saveNote()
             }
+        }
+
+        imgCopy.setOnClickListener {
+            var clipBoard: ClipboardManager = getActivity()?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val StrEdtFirtname = etNoteDesc.text.toString()
+            val clip = ClipData.newPlainText("Copied text",StrEdtFirtname)
+            clipBoard.apply{
+                setPrimaryClip(clip)
+            }
+            Toast.makeText(requireContext(), "Copied text", Toast.LENGTH_SHORT).show()
         }
 
         imgBack.setOnClickListener {
@@ -212,9 +224,13 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
                 tvWebLink.visibility = View.GONE
                 requireActivity().supportFragmentManager.popBackStack()
             }
+
         }
 
+
     }
+
+
 
 
     private fun saveNote() {
@@ -459,5 +475,7 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
     override fun onRationaleAccepted(requestCode: Int) {
 
     }
+
+
 
 }
